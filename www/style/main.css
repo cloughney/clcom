@@ -1,0 +1,98 @@
+/* OVERRIDES */
+
+body {
+	font-family: Verdana;
+	background: #f4f4f4;
+	color: #666;
+}
+
+a:link {
+	line-height: 1.5em;
+	padding: 0px 3px;
+	background: lightblue;
+	color: #fff;
+	text-decoration: none;
+}
+a:visited {
+	color: #fff;
+}
+a:active {
+	color: #fff;
+}
+a:hover {
+
+}
+
+
+/* CONTAINERS */
+
+#container_sidebar {
+	position: absolute;
+	top: 15px;
+	bottom: 15px;
+	left: 0px;
+	right: 80%;
+	font-family: 'Share Tech Mono';
+}
+#container_sb_title {
+	text-align: center;
+	font-size: 2em;
+	padding: 10px;
+	cursor: default;
+}
+#container_sb_menu {
+	margin-right: 0px;
+}
+#container_sb_bottom {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+	padding: 15px;
+	font-size: 18px;
+}
+#container_content {
+	position: absolute;
+	top: 15px;
+	bottom: 15px;;
+	right: 15px;
+	left: 20%;
+}
+
+/* SIDEBAR STUFF */
+
+.menuitem {
+	text-align: right;
+	font-size: 1.5em;
+	padding: 10px 20px 10px 10px;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+}
+.menuitem:hover {
+	background: #efefef;
+	color: lightblue;
+	border-bottom: 1px dotted lightblue;
+	padding-right: 30px;
+	-webkit-animation: ani-menu_hover 500ms;
+	animation: ani-menu_hover 500ms;
+}
+
+
+/* CONTENT STUFF */
+
+.content_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+
+/* ANIMATIONS */
+@-webkit-keyframes ani-menu_hover {
+	from { padding-right: 20px; background: #e9e9e9; }
+	to { padding-right: 30px; background: #efefef; }
+}
+@keyframes ani-menu_hover {
+	from { padding-right: 20px; background: #e9e9e9; }
+	to { padding-right: 30px; background: #efefef; }
+}

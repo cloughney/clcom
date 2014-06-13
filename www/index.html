@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Chris Loughney - Coming Soon</title>
+		<link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="style/main.css">
+	</head>
+	<body>
+		<div id="container_sidebar">
+			<div id="container_sb_title">
+				<span style="border-bottom: 1px dotted lightblue;">Chris Loughney</span>
+			</div>
+			<div id="container_sb_menu">
+				<div id="menuDashboard" class="menuitem">Dashboard</div>
+				<div id="menuProjects" class="menuitem">Projects</div>
+				<div id="menuResume" class="menuitem">Resume</div>
+				<div id="menuAbout" class="menuitem">About</div>
+			</div>
+			<div id="container_sb_bottom">
+				Check out these other things:<br />
+				<br />
+				- <a href="https://github.com/cloughney" target="_blank">My GitHub</a><br />
+				- <a href="http://www.linkedin.com/pub/christopher-loughney/5a/363/6b/" target="_blank">My LinkedIn</a><br />
+			</div>
+		</div>
+		<div id="container_content">
+			<div class="content_wrapper">
+				<div id="divMainShade" style="position:absolute; z-index: 999; top:2px; bottom: 2px; left: 2px; right: 2px; background:lightblue; padding: 15px; opacity: 0.90; filter: alpha(opacity=90);">
+					<div style="padding: 20%; color: white; font-size: 96px; font-weight: bold;"></div>
+				</div>
+				<div id="contDashboard" class="contentHolder" style="padding-top: 20%;">
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; color:#999;">this website is currently undergoing a little maintenance, but the fully functional version is</div>
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; font-size:56px; font-weight:bold; color:#999;">Coming Soon</div>
+
+					<!-- <div style="position:relative; bottom:10px; right:10px; padding:10px; border-radius: 15px; -webkit-border-radius: 15px; background:#f4f4f4;">
+						<a class="twitter-timeline" href="https://twitter.com/KrikLoch" width="400" height="450" data-widget-id="459917896022388736" data-chrome="transparent noheader nofooter noscrollbar">Tweets by @KrikLoch</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div> -->
+				</div>
+				<div id="contProjects" class="contentHolder" style="display:none; padding-top: 10%;">
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; color:#999;">this website is currently undergoing a little maintenance, but the fully functional version is</div>
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; font-size:56px; font-weight:bold; color:#999;">Coming Soon</div>
+				</div>
+				<div id="contResume" class="contentHolder" style="display:none; padding-top: 40%;">
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; color:#999;">this website is currently undergoing a little maintenance, but the fully functional version is</div>
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; font-size:56px; font-weight:bold; color:#999;">Coming Soon</div>
+				</div>
+				<div id="contAbout" class="contentHolder" style="display:none; padding-top: 30%;">
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; color:#999;">this website is currently undergoing a little maintenance, but the fully functional version is</div>
+					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; font-size:56px; font-weight:bold; color:#999;">Coming Soon</div>
+				</div>
+			</div>
+		</div>
+		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.js"></script> -->
+		<script type="text/javascript">
+			function initNavigation() {
+				var shade = $('#divMainShade');
+				var hideShade = function () {
+					//shade.off('mouseenter');
+					shade.slideUp(300);
+				};
+				var showShade = function(color, text) {
+					shade.css('background', color);
+					shade.children('div:first').html(text);
+					if (!shade.is(':visible')) {
+						shade.slideDown(300);
+					}
+				}
+				shade.slideUp(0);
+				//shade.mouseenter(hideShade);
+				$('#container_sb_menu').mouseleave(hideShade);
+
+				var menuItems = $('.menuitem');
+				var menuItems_mouseenter = function () {
+					var color, text;
+					switch (this.id) {
+						case 'menuDashboard':
+							color = 'lightblue';
+							text = "Dashboard";
+							break;
+						case 'menuProjects':
+							color = 'orange';
+							text = "Projects";
+							break;
+						case 'menuResume':
+							color = 'green';
+							text = "Resume";
+							break;
+						case 'menuAbout':
+							color = 'red';
+							text = "About";
+							break;
+					}
+					showShade(color, text);
+				};
+				menuItems.mouseenter(menuItems_mouseenter);
+
+				menuItems.click(function() {
+					$('.contentHolder').hide();
+					var newContentHolder;
+					switch (this.id) {
+						case 'menuDashboard':
+							newContentHolder = $('#contDashboard');
+							break;
+						case 'menuProjects':
+							newContentHolder = $('#contProjects');
+							break;
+						case 'menuResume':
+							newContentHolder = $('#contResume');
+							break;
+						case 'menuAbout':
+							newContentHolder = $('#contAbout');
+							break;
+					}
+					newContentHolder.show();
+					hideShade();
+					menuItems.off('mouseenter');
+					setTimeout(function() {
+						menuItems.mouseenter(menuItems_mouseenter);
+					}, 300);
+				});
+			} initNavigation();
+		</script>
+	</body>
+</html>
