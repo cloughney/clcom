@@ -60,6 +60,10 @@ a:hover {
 	left: 20%;
 }
 
+#divMainShade {
+	font-family: 'Open Sans';
+}
+
 /* SIDEBAR STUFF */
 
 .menuitem {
