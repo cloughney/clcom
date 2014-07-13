@@ -97,7 +97,11 @@ function initNavigation() {
 		}
 	});
 
-	$('#contAbout').show();
-	navShowAbout();
+	if (location.hash === "#/404") {
+		$('#cont404').show();
+	} else {
+		$('#contAbout').show();
+		navShowAbout();
+	}
 
 } initNavigation();
