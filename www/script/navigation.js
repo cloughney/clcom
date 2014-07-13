@@ -64,15 +64,19 @@ function initNavigation() {
 		switch (this.id) {
 			case 'menuDashboard':
 				newContentHolder = $('#contDashboard');
+				location.hash = '#/dashboard';
 				break;
 			case 'menuProjects':
 				newContentHolder = $('#contProjects');
+				location.hash = '#/projects';
 				break;
 			case 'menuResume':
 				newContentHolder = $('#contResume');
+				location.hash = '#/resume';
 				break;
 			case 'menuAbout':
 				newContentHolder = $('#contAbout');
+				location.hash = '#/about';
 				break;
 		}
 		newContentHolder.show();
@@ -99,9 +103,26 @@ function initNavigation() {
 
 	if (location.hash === "#/404") {
 		$('#cont404').show();
+	} else if (location.hash !== "") {
+		switch (location.hash.toLowerCase()) {
+			case '#/dashboard':
+				$('#menuDashboard').click();
+				break;
+			case '#/projects':
+				$('#menuProjects').click();
+				break;
+			case '#/resume':
+				$('#menuResume').click();
+				break;
+			case '#/about':
+				$('#menuAbout').click();
+				break;
+			default:
+				location.hash = '#/404';
+				$('#cont404').show();
+		}
 	} else {
-		$('#contAbout').show();
-		navShowAbout();
+		$('#menuAbout').click();
 	}
 
 } initNavigation();
