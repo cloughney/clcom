@@ -23,6 +23,10 @@ a:hover {
 
 }
 
+a:link.big {
+	font-size: 1.3em;
+}
+
 
 /* CONTAINERS */
 
@@ -101,6 +105,26 @@ a:hover {
 	}
 	#divBasicUi .content {
 		margin: 45px 15px 0px 15px;
+	}
+
+#divResume {
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+
+	background: #eee;
+}
+	#divResume .bio {
+		padding: 25px 20% 25px 25px;
+
+		background: #eee;
+	}
+	#divResume .downloads {
+		padding: 25px;
+
+		background: #e3e3e3;
 	}
 
 #divConsole {
