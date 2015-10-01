@@ -2,27 +2,35 @@
     "version": "1.5.0-beta",
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "amd",
         "moduleResolution": "node",
         "isolatedModules": false,
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "declaration": false,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "./www/app"
     },
     "filesGlob": [
-        "./**/*.ts",
-        "./**/*.tsx",
-        "!./node_modules/**/*"
+        "./app/**/*.ts",
+        "./app/**/*.tsx",
+        "./typings/**.d.ts"
     ],
     "files": [
-        "./typings/jquery/jquery.d.ts",
-        "./typings/tsd.d.ts",
-        "./www/script/app.ts"
+        "./app/Application.ts",
+        "./app/bootstrap.ts",
+        "./app/components/ContentViewLoader.ts",
+        "./app/lib/JQueryScoped.ts",
+        "./app/lib/webconsole/src/Console.ts",
+        "./app/typings/Klochwork.ts",
+        "./app/viewModels/ApplicationViewModel.ts",
+        "./app/viewModels/NavigationViewModel.ts",
+        "./app/viewModels/ResumeViewModel.ts",
+        "./typings/tsd.d.ts"
     ]
 }

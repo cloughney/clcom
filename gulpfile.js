@@ -2,30 +2,24 @@
 
 var gulp = require('gulp'),
     tsc = require('gulp-typescript'),
-    uglify = require('gulp-uglify'),
-    change = require('gulp-change');
+    uglify = require('gulp-uglify');
+
+var tsProject = tsc.createProject("tsconfig.json");
 
 gulp.task("build", function () {
-	var result = gulp.src("src/**/*.ts")
-		.pipe(tsc({
-			noImplicitAny: true,
-			out: "gitshell.js",
-			target: "ES6"
-		}));
+	var result = tsProject.src()
+    .pipe(tsc(tsProject));
 
 	return result.js
 		.pipe(uglify())
 		.on('error', function(error) {
 	  		console.error(error.message);
 		})
-		.pipe(change(function (fileContents) {
-			return "#!/usr/local/bin/node\n" + fileContents;
-		}))
-		.pipe(gulp.dest("bin"));
+		.pipe(gulp.dest(""));
 });
 
 gulp.task("watch", function() {
-	gulp.watch("www/**/*.ts", ["build"]);
+	gulp.watch(tsProject.options.files, ["build"]);
 });
 
 gulp.task("default", ["build"], function () {
