@@ -1,23 +1,28 @@
 'use strict';
 requirejs.config({
-    baseUrl: "app",
+    baseUrl: "./app",
     paths: {
-        "jquery": "https://code.jquery.com/jquery-2.1.4.min",
-        "knockout": "https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min"
+        "text": "//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min",
+        "jquery": "//code.jquery.com/jquery-2.1.4.min",
+        "knockout": "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min",
+        "templates": "../templates"
     },
 });
-require(['jquery', 'knockout', './viewModels/ApplicationViewModel'], function ($, ko, ApplicationViewModel) {
-    var appConfig = {
-        debug: true
-    };
-    if (appConfig.debug === true) {
-        console.log("Config loaded");
-    }
+require(['./Extensions', './components/Registration'], function () { });
+require(['jquery', 'knockout', './AppConfig', './viewModels/ApplicationViewModel'], function ($, ko, AppConfig, ApplicationViewModel) {
     $(function () {
-        var viewModel = new ApplicationViewModel(appConfig);
-        ko.applyBindings(viewModel);
-        if (appConfig.debug === true) {
-            window["app"] = viewModel;
-        }
+        AppConfig.load().done(function (appConfig) {
+            if (appConfig.debug) {
+                console.log("Config loaded");
+            }
+            var viewModel = new ApplicationViewModel(appConfig);
+            ko.applyBindings(viewModel);
+            if (appConfig.debug) {
+                window["app"] = viewModel;
+                console.log("Bindings applied");
+            }
+        }).fail(function (msg) {
+            throw msg;
+        });
     });
 });

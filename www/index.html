@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-	<html lang="en-us">
+<html lang="en-us">
 	<head>
 		<title>Christopher Loughney - Software Extraordinaire</title>
 		<meta charset="UTF-8">
@@ -7,9 +7,10 @@
 		<meta name="author" content="Chris Loughney">
 		<meta name="keywords" content="Loughney,Chris Loughney,Christopher Loughney,krik">
 		<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-		<link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="style/main.css">
+		<link href="//fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet" type="text/css">
+		<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="css/main.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="container_sidebar">
@@ -29,73 +30,17 @@
 				- <a href="http://www.linkedin.com/pub/christopher-loughney/5a/363/6b/" target="_blank">My LinkedIn</a><br />
 			</div>
 		</div>
-		<div id="container_content">
+		<div data-bind="with: contentLoader">
 			<div class="content_wrapper">
 
 				<div id="divMainShade">
 					<div style="padding: 20%; color: white; font-size: 96px; font-weight: bold;"></div>
 				</div>
 
-				<div id="contDashboard" class="contentHolder" style="padding-top: 20%;">
-					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; color:#999;">this website is currently undergoing a little maintenance, but the fully functional version is</div>
-					<div style="width:100%; text-align:center; font-family:'Share Tech Mono'; font-size:56px; font-weight:bold; color:#999;">Coming Soon</div>
-				</div>
-
-				<div id="contProjects" class="contentHolder">
-					<div id="divBasicUi" style="">
-						<div class="navbar">
-							<span class="title">Projects</span>
-							<span class="menuitem">Web</span>
-							<span class="menuitem">Android</span>
-							<span class="menuitem">Desktop</span>
-							<span class="menuitem">Libraries</span>
-							<span class="menuitem">Other</span>
-						</div>
-						<div class="content">
-							<span style="color: #fff; font-weight: bold;">&gt;&gt;&gt; Project Page &lt;&lt;&lt;</span><br />
-							<span style="color: #ddd;">My active and past projects will be displayed here. Check back later to see what I'm working on.</span>
-						</div>
-					</div>
-				</div>
-
-				<div id="contResume" class="contentHolder">
-					<div id="divResume">
-						<div class="bio">
-							<h2>Software Extraordinaire you say?</h2>
-							Well, that depends on how modest I'm feeling.<br /><br />
-							I do have quite a bit of experience with a broad range of technologies and languages. My fascination with code started with scripting and web design in my early teens and has filled me with the passion that I have for my work today. I continue to stay on top of new technologies and can regularly be found experimenting and working on side projects until four in the morning. I love solving problems and taking on difficult challenges. If you have one... bring it on.<br /><br />
-							The links below will be especially useful to you if you are looking to sneak a peak at my most up to date resume:
-						</div>
-						<div class="downloads">
-							<a href="files/Resume.pdf" class="big">Download Resume (PDF)</a><br />
-							<a href="files/Resume.doc" class="big">Download Resume (Word Doc)</a>
-						</div>
-					</div>
-				</div>
-
-				<div id="contAbout" class="contentHolder" style="">
-					<div id="divConsole">chris@chrisloughney.com:~$</div>
-				</div>
-
-				<div id="cont404" class="contentHolder">
-					<div id="div404">
-						<br />
-						A problem has been detected and this site has displayed this page to prevent further confusion for the user.<br /><br />
-						DRIVER_ISSUE_DOES_NOT_EXIST_THIS_IS_JUST_A_404<br /><br />
-						If this is the first time you've seen this 404 page, you are probably okay, a link may be broken or you you may have simply mistyped the URL by mistake. These things happen. If this page appears again, follow these steps:<br /><br />
-						Click one of these fine links to the left. They are sure to take you somewhere interesting. If you continue to see this page then you must be repeating an incorrect step over and over and expecting a different result. This may be a sign of insanity. Please seek medical attention.<br /><br />
-						Technical Information:<br /><br />
-						*** STOP 0x00000194 (0x0000000000000004,0x0000000000000001,0x000000000000000D,0x000000000000000E)<br /><br />
-						Beginning dump of physical memory (not really though)<br /><br />
-						Physical memory dump complete.<br />
-						Contact <a href="mailto:chris@chrisloughney.com" target="_blank">chris@chrisloughney.com</a> if these problems persist.<br /><br />
-						<h1>404 - Page not found!</h1>
-					</div>
-				</div>
-
+				<!-- ko component: activeComponentName --><!-- /ko -->
 			</div>
 		</div>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
 		<script src="app/bootstrap.js"></script>
 	</body>
 </html>
