@@ -1,0 +1,10 @@
+{
+    "debug": true,
+
+    "routeConfig": {
+        "defaultRoute": "dashboard",
+        "routes": {
+
+        }
+    }
+}

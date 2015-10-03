@@ -21,26 +21,25 @@ class AppConfig {
         }
 
         AppConfig.instance = new AppConfig();
-        $d.resolve(AppConfig.instance);
 
-        // $.ajax({
-        //     url: "",
-        //     method: "GET"
-        // }).done((config: {}) => {
-        //     if (!config || !(config instanceof AppConfig)) {
-        //         $d.reject("Error: Received invalid configuration from server.");
-        //         return $d;
-        //     }
-        //
-        //     $.each(config, (key, value) => {
-        //         if (AppConfig.instance.hasOwnProperty(key)) {
-        //             AppConfig.instance[key] = value;
-        //         }
-        //     });
-        //     $d.resolve(AppConfig.instance);
-        // }).fail(() => {
-        //     $d.reject("Error: Failed to load remote configuration.");
-        // });
+        $.ajax({
+            url: "config.json",
+            method: "GET"
+        }).done((config: AppConfig) => {
+            if (!config) { //TODO better check for invalid data
+                $d.reject("Error: Received invalid configuration from server.");
+                return $d;
+            }
+
+            $.each(config, (key, value) => {
+                if (AppConfig.instance.hasOwnProperty(key)) {
+                    AppConfig.instance[key] = value;
+                }
+            });
+            $d.resolve(AppConfig.instance);
+        }).fail(() => {
+            $d.reject("Error: Failed to load remote configuration.");
+        });
 
         return $d;
     }

@@ -3,24 +3,21 @@ define(["require", "exports", 'knockout', '../Logger', '../Events'], function (r
         function ContentLoaderViewModel() {
             var _this = this;
             this.updateContent = function (route) {
-                if (route.equals(_this.activeRoute)) {
-                    return;
-                }
-                _this.log.debug("Updating route to '" + route.getPath() + "'");
+                _this.log.debug("Updating content view to '" + route.getComponentName() + "'");
                 var componentName = route.getComponentName();
                 _this.activeComponentName(componentName);
                 _this.activeRoute = route;
             };
-            this.log = new Logger(ContentLoaderViewModel.getName());
+            this.log = new Logger(ContentLoaderViewModel.className);
             this.activeComponentName = ko.observable();
-            Events.subscribe(Events.routeUpdate, "", function (data) {
+            Events.subscribe(Events.routeUpdate, ContentLoaderViewModel.className, function (data) {
                 var route = Events.getRouteUpdateData(data);
                 if (route) {
                     _this.updateContent(route);
                 }
             });
         }
-        ContentLoaderViewModel.className = "klochwork.viewModels.ContentLoaderViewModel";
+        ContentLoaderViewModel.className = ContentLoaderViewModel.getName();
         return ContentLoaderViewModel;
     })();
     return ContentLoaderViewModel;

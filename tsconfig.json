@@ -30,6 +30,7 @@
         "./app/bootstrap.ts",
         "./app/components/Registration.ts",
         "./app/components/views/DashboardView.ts",
+        "./app/components/views/ResumeView.ts",
         "./app/lib/JQueryScoped.ts",
         "./app/lib/webconsole/src/Console.ts",
         "./app/models/Route.ts",

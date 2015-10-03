@@ -5,15 +5,15 @@ import Events = require('../Events');
 import Route = require("../models/Route")
 
 class ContentLoaderViewModel {
-    private static className = "klochwork.viewModels.ContentLoaderViewModel";
+    private static className = ContentLoaderViewModel.getName();
     private log: Logger;
     private activeRoute: Route;
 
     constructor() {
-        this.log = new Logger(ContentLoaderViewModel.getName());
+        this.log = new Logger(ContentLoaderViewModel.className);
         this.activeComponentName = ko.observable<string>();
 
-        Events.subscribe(Events.routeUpdate, "",
+        Events.subscribe(Events.routeUpdate, ContentLoaderViewModel.className,
             (data: {}) => {
                 var route = Events.getRouteUpdateData(data);
                 if (route) { this.updateContent(route); }
@@ -23,11 +23,7 @@ class ContentLoaderViewModel {
     public activeComponentName: KnockoutObservable<string>;
 
     public updateContent = (route: Route): void => {
-        if (route.equals(this.activeRoute)) {
-            return;
-        }
-
-        this.log.debug("Updating route to '" + route.getPath() + "'");
+        this.log.debug("Updating content view to '" + route.getComponentName() + "'");
         var componentName = route.getComponentName();
         this.activeComponentName(componentName);
         this.activeRoute = route;

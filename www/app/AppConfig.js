@@ -1,4 +1,4 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", 'jquery'], function (require, exports, $) {
     var AppConfig = (function () {
         function AppConfig() {
             this.debug = true;
@@ -14,7 +14,23 @@ define(["require", "exports"], function (require, exports) {
                 return $d.promise();
             }
             AppConfig.instance = new AppConfig();
-            $d.resolve(AppConfig.instance);
+            $.ajax({
+                url: "config.json",
+                method: "GET"
+            }).done(function (config) {
+                if (!config) {
+                    $d.reject("Error: Received invalid configuration from server.");
+                    return $d;
+                }
+                $.each(config, function (key, value) {
+                    if (AppConfig.instance.hasOwnProperty(key)) {
+                        AppConfig.instance[key] = value;
+                    }
+                });
+                $d.resolve(AppConfig.instance);
+            }).fail(function () {
+                $d.reject("Error: Failed to load remote configuration.");
+            });
             return $d;
         };
         AppConfig.get = function () {
