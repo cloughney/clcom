@@ -27,6 +27,7 @@
         "./app/Extensions.ts",
         "./app/Logger.ts",
         "./app/Router.ts",
+        "./app/bindingHandlers/SlideVisible.ts",
         "./app/bootstrap.ts",
         "./app/components/Registration.ts",
         "./app/components/views/AboutView.ts",

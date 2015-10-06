@@ -16,7 +16,7 @@ requirejs.config({
 	// }
 });
 
-require(['./Extensions', './components/Registration'], () => {});
+require(['./Extensions', './bindingHandlers/SlideVisible', './components/Registration'], () => {});
 
 require(
 	['jquery', 'knockout', './AppConfig', './viewModels/ApplicationViewModel'],

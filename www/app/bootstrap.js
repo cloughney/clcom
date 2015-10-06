@@ -8,7 +8,7 @@ requirejs.config({
         "templates": "../templates"
     },
 });
-require(['./Extensions', './components/Registration'], function () { });
+require(['./Extensions', './bindingHandlers/SlideVisible', './components/Registration'], function () { });
 require(['jquery', 'knockout', './AppConfig', './viewModels/ApplicationViewModel'], function ($, ko, AppConfig, ApplicationViewModel) {
     $(function () {
         AppConfig.load().done(function (appConfig) {
