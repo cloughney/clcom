@@ -7,35 +7,40 @@
 		<meta name="author" content="Chris Loughney">
 		<meta name="keywords" content="Loughney,Chris Loughney,Christopher Loughney,krik">
 		<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<link href="//fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet" type="text/css">
 		<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<link href="css/site.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div class="col-lg-2 col-md-3">
-			<div id="container_sb_title">
-				<span>Chris Loughney</span>
-			</div>
-			<div id="container_sb_menu" data-bind="with: $data.navigation">
-				<!-- ko foreach: $data.items -->
-				<a class="menuitem" data-bind="text: $data.title, attr: { href: $data.path }"></a>
-				<!-- /ko -->
-			</div>
-			<!-- <div id="container_sb_bottom">
-				Check out these other things:<br />
-				<br />
-				- <a href="https://github.com/cloughney" target="_blank">My GitHub</a><br />
-				- <a href="http://www.linkedin.com/pub/christopher-loughney/5a/363/6b/" target="_blank">My LinkedIn</a><br />
-			</div> -->
-		</div>
-		<div class="col-lg-10 col-md-9" data-bind="with: contentLoader">
-			<div class="content_wrapper">
-				<!-- ko component: activeComponentName --><!-- /ko -->
-				<div id="divMainShade">
-					<div style="padding: 20%; color: white; font-size: 96px; font-weight: bold;"></div>
+		<div class="site-container">
+			<div class="col-lg-2 col-md-3 sidebar">
+				<div class="title text-center">
+					<span>Chris Loughney</span>
 				</div>
+				<img src="//images.teamsugar.com/files/users/1/12981/39_2007/bacon.jpg" class="img-responsive" />
+
+				<div class="navigation" data-bind="with: $data.navigation">
+					<!-- ko foreach: $data.items -->
+					<a class="menu-item" data-bind="text: $data.title, attr: { href: $data.path }"></a>
+					<!-- /ko -->
+				</div>
+				<!-- <div id="container_sb_bottom">
+					Check out these other things:<br />
+					<br />
+					- <a href="https://github.com/cloughney" target="_blank">My GitHub</a><br />
+					- <a href="http://www.linkedin.com/pub/christopher-loughney/5a/363/6b/" target="_blank">My LinkedIn</a><br />
+				</div> -->
 			</div>
+			<div class="col-lg-10 col-md-9 content" data-bind="with: contentLoader">
+				<div class="view-wrapper">
+					<!-- ko component: activeComponentName --><!-- /ko -->
+				</div>
+				<div class="shade" data-bind="visible: $data.showViewShade"></div>
+			</div>
+		</div>
+		<div class="loading-overlay" data-bind="visible: $data.showLoadingOverlay">
+			<div class="loading-text">Loading...</div>
 		</div>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
 		<script src="app/bootstrap.js"></script>

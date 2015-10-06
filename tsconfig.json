@@ -34,7 +34,6 @@
         "./app/components/views/NotFoundView.ts",
         "./app/components/views/ResumeView.ts",
         "./app/lib/JQueryScoped.ts",
-        "./app/lib/webconsole/src/Console.ts",
         "./app/models/Route.ts",
         "./app/typings/Klochwork.d.ts",
         "./app/viewModels/ApplicationViewModel.ts",

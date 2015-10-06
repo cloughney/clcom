@@ -12,6 +12,7 @@ class ContentLoaderViewModel {
     constructor() {
         this.log = new Logger(ContentLoaderViewModel.className);
         this.activeComponentName = ko.observable<string>();
+        this.showViewShade = ko.observable(false);
 
         Events.subscribe(Events.routeUpdate, ContentLoaderViewModel.className,
             (data: {}) => {
@@ -21,9 +22,12 @@ class ContentLoaderViewModel {
     }
 
     public activeComponentName: KnockoutObservable<string>;
+    public showViewShade: KnockoutObservable<boolean>;
 
     public updateContent = (route: Route): void => {
         this.log.debug("Updating content view to '" + route.getComponentName() + "'");
+        //this.showViewShade(true);
+
         var componentName = route.getComponentName();
         this.activeComponentName(componentName);
         this.activeRoute = route;

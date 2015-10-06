@@ -10,6 +10,7 @@ define(["require", "exports", 'knockout', '../Logger', '../Events'], function (r
             };
             this.log = new Logger(ContentLoaderViewModel.className);
             this.activeComponentName = ko.observable();
+            this.showViewShade = ko.observable(false);
             Events.subscribe(Events.routeUpdate, ContentLoaderViewModel.className, function (data) {
                 var route = Events.getRouteUpdateData(data);
                 if (route) {

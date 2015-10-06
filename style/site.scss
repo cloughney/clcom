@@ -1,0 +1,114 @@
+html {
+    height: 100%;
+}
+
+body {
+	font-family: Verdana;
+	background: #f4f4f4;
+	color: #666;
+    height: 100%;
+}
+
+a:link {
+	line-height: 1.5em;
+	padding: 0px 3px;
+	background: lightblue;
+	color: #fff;
+	text-decoration: none;
+}
+a:visited {
+	color: #fff;
+}
+a:active {
+	color: #fff;
+}
+a:hover {
+
+}
+
+a:link.big {
+	font-size: 1.3em;
+}
+
+.site-container {
+    min-height: 100%;
+    height: 100%;
+
+    .sidebar {
+        font-family: 'Share Tech Mono';
+
+        .title {
+            font-size: 2em;
+        	padding: 10px;
+        	cursor: default;
+        }
+
+        .navigation {
+            text-align: right;
+
+            .menu-item {
+                display: block;
+                margin: 10px 0 10px 0;
+                border-bottom: 1px solid #ccc;
+                font-size: 1.8em;
+                color: #333;
+            }
+        }
+    }
+
+    .content {
+        position: relative;
+        min-height: 100%;
+        height: 100%;
+
+        .view-wrapper {
+        	height: 100%;
+        	width: 100%;
+            position: relative;
+        }
+
+        .shade {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #333;
+            opacity: 0.9;
+        }
+    }
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    background: #333;
+    opacity: 0.8;
+
+    .loading-text {
+        position: absolute;
+        height: 20px;
+        width: 100%;
+        top: 30%;
+        text-align: center;
+        color: #e4e4e4;
+        font-size: 2em;
+    }
+}
+
+
+
+
+/* ANIMATIONS */
+@-webkit-keyframes ani-menu_hover {
+	from { padding-right: 20px; background: #e9e9e9; }
+	to { padding-right: 30px; background: #efefef; }
+}
+@keyframes ani-menu_hover {
+	from { padding-right: 20px; background: #e9e9e9; }
+	to { padding-right: 30px; background: #efefef; }
+}
