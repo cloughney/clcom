@@ -16,21 +16,27 @@ define(["require", "exports", 'knockout', './Events', './models/Route'], functio
                 }
                 return path;
             };
-            this.getRouteFromPath = function (path) {
+            this.resolveRoute = function (path) {
                 var routePieces = path.split("/");
                 var area = routePieces[0];
                 var point = routePieces.length > 1 ? routePieces[1] : "";
-                if (!area || !ko.components.isRegistered(area + "-view")) {
-                    area = _this.routeConfig.defaultRoute;
-                    point = "";
+                area = _this.routeMap.hasOwnProperty(area)
+                    ? _this.routeMap[area]
+                    : area;
+                if (!area) {
+                    return _this.resolveRoute(_this.routeConfig.defaultRoute);
+                }
+                if (!ko.components.isRegistered(area + "-view")) {
+                    return _this.resolveRoute(_this.routeConfig.notFoundRoute);
                 }
                 return new Route(area, point);
             };
             this.activeRoute = function () {
                 var path = _this.getCleanPath();
-                return _this.getRouteFromPath(path);
+                return _this.resolveRoute(path);
             };
-            Events.subscribe(Events.hashChange, "klochwork.Router", function () { return Events.trigger(Events.routeUpdate, _this.activeRoute()); });
+            this.routeMap = routeConfig.routes;
+            Events.subscribe(Events.hashChange, Router.getName(), function () { return Events.trigger(Events.routeUpdate, _this.activeRoute()); });
         }
         return Router;
     })();

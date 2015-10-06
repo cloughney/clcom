@@ -5,10 +5,11 @@ import Route = require('./models/Route');
 
 class Router {
     private defaultRouteRegex = /^#\/?$/;
-    private routeMap: { [path: string]: {} } = {};
+    private routeMap: { [path: string]: string } = {};
 
     constructor(private routeConfig: RouteConfig) {
-        Events.subscribe(Events.hashChange, "klochwork.Router",
+        this.routeMap = routeConfig.routes;
+        Events.subscribe(Events.hashChange, Router.getName(),
             () => Events.trigger(Events.routeUpdate, this.activeRoute()));
     }
 
@@ -24,14 +25,21 @@ class Router {
         return path;
     }
 
-    private getRouteFromPath = (path: string) => {
+    private resolveRoute = (path: string): Route => {
         var routePieces = path.split("/");
         var area = routePieces[0];
         var point = routePieces.length > 1 ? routePieces[1] : "";
 
-        if (!area || !ko.components.isRegistered(area + "-view")) {
-            area = this.routeConfig.defaultRoute;
-            point = "";
+        area = this.routeMap.hasOwnProperty(area)
+            ? this.routeMap[area]
+            : area;
+
+        if (!area) {
+            return this.resolveRoute(this.routeConfig.defaultRoute);
+        }
+
+        if (!ko.components.isRegistered(area + "-view")) {
+            return this.resolveRoute(this.routeConfig.notFoundRoute);
         }
 
         return new Route(area, point);
@@ -39,7 +47,7 @@ class Router {
 
     public activeRoute = (): Route => {
         var path = this.getCleanPath();
-        return this.getRouteFromPath(path);
+        return this.resolveRoute(path);
     }
 }
 

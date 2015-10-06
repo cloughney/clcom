@@ -3,7 +3,8 @@ define(["require", "exports", 'jquery'], function (require, exports, $) {
         function AppConfig() {
             this.debug = true;
             this.routeConfig = {
-                defaultRoute: "dashboard",
+                defaultRoute: "",
+                notFoundRoute: "",
                 routes: {}
             };
         }

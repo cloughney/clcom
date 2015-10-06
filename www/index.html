@@ -13,31 +13,28 @@
 		<link href="css/main.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div id="container_sidebar">
+		<div class="col-lg-2 col-md-3">
 			<div id="container_sb_title">
 				<span>Chris Loughney</span>
 			</div>
-			<div id="container_sb_menu">
-				<!-- <div id="menuDashboard" class="menuitem">Dashboard</div> -->
-				<!-- <div id="menuProjects" class="menuitem">Projects</div> -->
-				<div id="menuResume" class="menuitem">Resume</div>
-				<div id="menuAbout" class="menuitem">About</div>
+			<div id="container_sb_menu" data-bind="with: $data.navigation">
+				<!-- ko foreach: $data.items -->
+				<a class="menuitem" data-bind="text: $data.title, attr: { href: $data.path }"></a>
+				<!-- /ko -->
 			</div>
-			<div id="container_sb_bottom">
+			<!-- <div id="container_sb_bottom">
 				Check out these other things:<br />
 				<br />
 				- <a href="https://github.com/cloughney" target="_blank">My GitHub</a><br />
 				- <a href="http://www.linkedin.com/pub/christopher-loughney/5a/363/6b/" target="_blank">My LinkedIn</a><br />
-			</div>
+			</div> -->
 		</div>
-		<div data-bind="with: contentLoader">
+		<div class="col-lg-10 col-md-9" data-bind="with: contentLoader">
 			<div class="content_wrapper">
-
+				<!-- ko component: activeComponentName --><!-- /ko -->
 				<div id="divMainShade">
 					<div style="padding: 20%; color: white; font-size: 96px; font-weight: bold;"></div>
 				</div>
-
-				<!-- ko component: activeComponentName --><!-- /ko -->
 			</div>
 		</div>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>

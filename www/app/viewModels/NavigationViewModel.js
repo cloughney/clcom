@@ -2,15 +2,17 @@ define(["require", "exports"], function (require, exports) {
     var NavigationViewModel = (function () {
         function NavigationViewModel() {
             this.items = [
-                new NavigationItem("Resume", "resume")
+                new NavigationItem("About", "#/about"),
+                new NavigationItem("Resume", "#/resume"),
+                new NavigationItem("404", "#/404")
             ];
         }
         return NavigationViewModel;
     })();
     var NavigationItem = (function () {
-        function NavigationItem(title, container) {
+        function NavigationItem(title, path) {
             this.title = title;
-            this.container = container;
+            this.path = path;
         }
         return NavigationItem;
     })();

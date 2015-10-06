@@ -6,10 +6,9 @@ class AppConfig {
     public debug: boolean = true;
 
     public routeConfig: RouteConfig = {
-        defaultRoute: "dashboard",
-        routes: {
-
-        }
+        defaultRoute: "",
+        notFoundRoute: "",
+        routes: {}
     };
 
     public static load(): JQueryPromise<AppConfig> {

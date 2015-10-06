@@ -1,7 +1,9 @@
 class NavigationViewModel {
 	constructor() {
 		this.items = [
-			new NavigationItem("Resume", "resume")
+			new NavigationItem("About", "#/about"),
+			new NavigationItem("Resume", "#/resume"),
+			new NavigationItem("404", "#/404")
 		];
 	}
 
@@ -11,7 +13,7 @@ class NavigationViewModel {
 class NavigationItem {
 	constructor(
 		public title: string,
-		public container: string) {}
+		public path: string) {}
 }
 
 export = NavigationViewModel;
