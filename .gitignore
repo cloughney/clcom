@@ -1,4 +1,4 @@
 node_modules
-typings
+typings/**/*
 www/app/**/*
 www/css/**/*

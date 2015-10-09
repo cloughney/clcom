@@ -37,7 +37,7 @@
         "./app/components/views/ResumeView.ts",
         "./app/lib/jquery/JQueryScoped.ts",
         "./app/models/Route.ts",
-        "./app/typings/Klochwork.d.ts",
+        "./app/typings/CLCom.ts",
         "./app/viewModels/ApplicationViewModel.ts",
         "./app/viewModels/ContentLoaderViewModel.ts",
         "./app/viewModels/NavigationViewModel.ts",

@@ -10,16 +10,15 @@ var sass = require('gulp-sass');
 
 var tsProject = tsc.createProject("tsconfig.json");
 
-gulp.task("requirejs-optimize", function () {
-	return gulp.src(["./www/app/**/*.js", "!./www/app/lib/**"])
+gulp.task("requirejs-optimize", ["build-ts"], function () {
+	return gulp.src("./www/app/bootstrap.js")
 		.pipe(rjsOptimize({
 			paths: {
 				"jquery": "empty:",
 				"knockout": "empty:"
-			},
-			optimize: 'none'
+			}
 		}).on("error", function(error) { console.error(error.message); }))
-		.pipe(gulp.dest("./www/app-test"));
+		.pipe(gulp.dest("./www/app"));
 });
 
 gulp.task("build-ts", function () {
@@ -31,7 +30,7 @@ gulp.task("build-ts", function () {
 		.on("error", function(error) {
 	  		console.error(error.message);
 		})
-		.pipe(gulp.dest(""));
+		.pipe(gulp.dest("./www"));
 });
 
 gulp.task("compile-sass", function () {
