@@ -44,6 +44,6 @@ gulp.task("watch-ts", function () { gulp.watch(tsProject.options.files, ["build-
 gulp.task("watch-sass", function () { gulp.watch(styleDir, ["compile-sass"]); });
 gulp.task("watch", ["watch-ts", "watch-sass"], function() {});
 
-gulp.task("default", ["build-ts", "compile-sass"], function () {
+gulp.task("default", ["requirejs-optimize", "compile-sass"], function () {
 
 });
