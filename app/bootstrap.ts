@@ -10,32 +10,43 @@ requirejs.config({
 		"templates": "../templates"
 	},
 
-	// map: {
-	// 	"*": { "jquery": "./lib/JQueryScoped" },
-	// 	"./lib/JQueryScoped": { "jquery": "jquery" }
-	// }
+	map: {
+		"*": { "jquery": "lib/jquery/JQueryScoped" },
+		"lib/jquery/JQueryScoped": { "jquery": "jquery" }
+	}
 });
 
-require(['./Extensions', './bindingHandlers/SlideVisible', './components/Registration'], () => {});
+require([
+		'Extensions',
+		'bindingHandlers/Registration',
+		'components/Registration',
+		'jquery',
+		'knockout',
+		'AppConfig',
+		'viewModels/ApplicationViewModel'],
+	(
+		_ext: any,
+		_bindingRegistration: any,
+		_componentRegistration: any,
+		$: JQueryStatic,
+		ko: KnockoutStatic,
+		AppConfig: any,
+		ApplicationViewModel: any) => { //TODO type this
+			$(() => {
+				AppConfig.load().done((appConfig: any) => {
+					if (appConfig.debug) {
+						console.log("Config loaded");
+					}
 
-require(
-	['jquery', 'knockout', './AppConfig', './viewModels/ApplicationViewModel'],
-	($: JQueryStatic, ko: KnockoutStatic, AppConfig: any, ApplicationViewModel: any) => { //TODO type this
-		$(() => {
-			AppConfig.load().done((appConfig: any) => {
-				if (appConfig.debug) {
-					console.log("Config loaded");
-				}
+					var viewModel = new ApplicationViewModel(appConfig);
+					ko.applyBindings(viewModel);
 
-				var viewModel = new ApplicationViewModel(appConfig);
-				ko.applyBindings(viewModel);
-
-				if (appConfig.debug) {
-					window["app"] = viewModel;
-					console.log("Bindings applied");
-				}
-			}).fail((msg: string) => {
-				throw msg;
+					if (appConfig.debug) {
+						window["app"] = viewModel;
+						console.log("Bindings applied");
+					}
+				}).fail((msg: string) => {
+					throw msg;
+				});
 			});
-		});
 });

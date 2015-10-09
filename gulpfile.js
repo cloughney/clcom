@@ -5,13 +5,26 @@ var styleDir = "./style/**/*.scss";
 var gulp = require('gulp');
 var tsc = require('gulp-typescript');
 var uglify = require('gulp-uglify');
+var rjsOptimize = require('gulp-requirejs-optimize');
 var sass = require('gulp-sass');
 
 var tsProject = tsc.createProject("tsconfig.json");
 
+gulp.task("requirejs-optimize", function () {
+	return gulp.src(["./www/app/**/*.js", "!./www/app/lib/**"])
+		.pipe(rjsOptimize({
+			paths: {
+				"jquery": "empty:",
+				"knockout": "empty:"
+			},
+			optimize: 'none'
+		}).on("error", function(error) { console.error(error.message); }))
+		.pipe(gulp.dest("./www/app-test"));
+});
+
 gulp.task("build-ts", function () {
 	var result = tsProject.src()
-    .pipe(tsc(tsProject));
+    	.pipe(tsc(tsProject));
 
 	return result.js
 		.pipe(uglify())
@@ -22,7 +35,7 @@ gulp.task("build-ts", function () {
 });
 
 gulp.task("compile-sass", function () {
-    gulp.src(styleDir)
+    return gulp.src(styleDir)
         .pipe(sass({ outputStyle: "compressed" })
             .on("error", function (error) { console.log(error); }))
         .pipe(gulp.dest("./www/css"));

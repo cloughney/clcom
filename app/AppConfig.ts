@@ -12,7 +12,7 @@ class AppConfig {
     };
 
     public static load(): JQueryPromise<AppConfig> {
-        var $d = jQuery.Deferred();
+        var $d = $.Deferred();
 
         if (AppConfig.instance) {
             $d.resolve(AppConfig.instance);

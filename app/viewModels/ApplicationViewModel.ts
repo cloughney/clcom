@@ -16,7 +16,7 @@ class ApplicationViewModel {
 
         this.contentLoader.updateContent(this.router.activeRoute());
 
-        this.showLoadingOverlay(false); //TODO fix page shift
+        this.showLoadingOverlay(false);
     }
 
     public showLoadingOverlay: KnockoutObservable<boolean>;
