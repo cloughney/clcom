@@ -1,5 +1,6 @@
 {
     "version": "1.7",
+    "compileOnSave": false,
     "compilerOptions": {
         "target": "es5",
         "module": "amd",
