@@ -1,5 +1,5 @@
 <section class="about-view">
-    <div class="console-window" tabindex="0" data-bind="event: { keydown: onKeyPress }, hasFocus: consoleHasFocus">
+    <div class="console-window" tabindex="0" data-bind="event: { keydown: onKeyDown, keypress: onKeyPress }, hasFocus: consoleHasFocus">
         <span class="output" data-bind="html: output"></span>
         <span class="prompt" data-bind="text: prompt">&gt;&nbsp;</span>
         <span class="input" data-bind="text: input"></span>
