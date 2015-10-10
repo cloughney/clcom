@@ -8,7 +8,6 @@
   },
   "devDependencies": {
     "bower": "^1.5.3",
-    "file:/app/lib/webconsole": "*",
     "gulp": "^3.9.0",
     "gulp-change": "^1.0.0",
     "gulp-requirejs-optimize": "^0.3.0",
